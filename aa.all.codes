@@ -1,4 +1,0 @@
-codes = {"CHAINSAW","subtomaokuma","NEWYEAR2023","subtosnowrbx","Cxrsed","SubToKelvingts","SubToBlamspot","KingLuffy","TOADBOIGAMING";"noclypso","FictioNTheFirst"}
-for _, v in pairs(codes) do
-pcall(function() game:GetService("ReplicatedStorage").endpoints["client_to_server"]["redeem_code"]:InvokeServer(v)()    end)
-end
