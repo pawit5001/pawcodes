@@ -1,0 +1,296 @@
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
+local Window = Library.CreateLib("MBLover", "Sentinel")
+
+local Tab = Window:NewTab("Main") --main
+local Section = Tab:NewSection("Auto Farm")
+Section:NewToggle("Auto Power", "Turn on for auto power", function(state) --power
+_G.autopower = state;
+while _G.autopower do wait()
+game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("LiftWeight"):FireServer()
+end
+game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("LiftWeight"):FireServer()    
+	if state then
+        print("Auto Power Off")
+    else
+        print("Auto Power On")
+    end
+end)
+
+Section:NewToggle("Auto Sell", "You must stay near the sell point", function(state)
+_G.autosell = state;
+while _G.autosell do wait()
+game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("SellStrengthRequest"):FireServer()
+end    
+	if state then
+        print("Auto Sell Off")
+    else
+        print("Auto Sell On")
+    end
+end)
+
+Section:NewToggle("Auto Coin", "Turn on for auto pick up the coin", function(state) --coin
+_G.autocoin = state;
+while _G.autocoin do wait()
+for i,v in pairs(game:GetService("Workspace").ConsumableSpawns.CoinModel:GetChildren()) do
+	if v.Name == "TouchInterest" then
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.Parent.CFrame
+wait(.1)
+end
+end
+end
+    if state then 
+        print("Auto Coin Off")
+    else
+        print("Auto Coin On")
+    end
+end)
+
+Section:NewToggle("Auto Gem", "Turn on for auto pick up the gem (lots of bug)", function(state) --gem
+_G.autogem = state; 
+while _G.autogem do wait()
+for i,v in pairs(game:GetService("Workspace").ConsumableSpawns.GemModel:GetChildren()) do
+	if v.Name == "TouchInterest" then
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.Parent.CFrame
+wait(.1)
+end
+end
+end    
+	if state then
+        print("Auto Gem Off")
+    else
+        print("Auto Gem On")
+    end
+end)
+Section:NewToggle("Auto Shamrocks", "Turn on for auto pick up the shamrocks", function(state) --sham
+_G.autosham = state;
+while _G.autosham do wait()
+for i,v in pairs(game:GetService("Workspace").ConsumableSpawns.ShamrocksModel:GetChildren()) do
+	if v.Name == "TouchInterest" then
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.Parent.CFrame
+wait(.1)
+end
+end
+end
+if state then
+        print("Auto Shamrocks Off")
+    else
+        print("Auto Shamrocks On")
+    end
+end)
+Section:NewToggle("Auto Reward", "Turn on for auto collect reward", function(state)
+_G.autocollectgift = state;
+while _G.autocollectgift do wait()
+game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("Timers"):WaitForChild("GetEventReward"):InvokeServer()
+end    
+	if state then
+        print("Auto Reward Off")
+    else
+        print("Auto Reward On")
+    end
+end)
+local Section = Tab:NewSection("Auto Buy")
+Section:NewToggle("Auto Buy Weights", "Turn on for buy all weights", function(state)
+_G.autobuyall = state;
+while _G.autobuyall do wait()
+local args = {
+    [1] = "Weight",
+    [2] = "Islands"
+}
+wait(2)
+game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("Shop"):WaitForChild("RequestBuyAll"):InvokeServer(unpack(args))
+end    
+    if state then
+        print("Auto Buy Off")
+    else
+        print("Auto Buy On")
+    end
+end)
+
+Section:NewToggle("Auto Equip Best Weights", "Turn on for auto equip best weights", function(state)
+_G.autoequipbest = state;
+while _G.autoequipbest do wait()
+game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("Shop"):WaitForChild("EquipBest"):FireServer()
+wait(3)
+end    
+    if state then
+        print("Auto Equip Best Off")
+    else
+        print("Auto Equip Best On")
+    end
+end)
+
+Section:NewToggle("Auto Buy DNA", "Turn on for auto buy dna", function(state)
+    _G.autobuydna = state
+    if _G.autobuydna then
+        print("Auto Buy DNA On")
+        while _G.autobuydna do
+            local args = {
+                [1] = nil,
+                [2] = "DNA",
+                [3] = "Islands"
+            }
+            for i=1, 200 do
+                args[1] = i 
+                game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("Shop"):WaitForChild("RequestPurchase"):InvokeServer(unpack(args))
+            end
+            wait()
+        end
+    else
+        print("Auto Buy DNA Off")
+    end
+end)
+
+Section:NewToggle("Auto Buy Aura", "Turn on for auto buy aura", function(state)
+_G.autobuyaura = state;
+while _G.autobuyaura do wait()
+    game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("Auras"):WaitForChild("GetEquipped"):InvokeServer()
+
+local args = {
+    [1] = "Strength"
+}
+
+    game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("Auras"):WaitForChild("GetLastPurchased"):InvokeServer(unpack(args))
+wait(5)
+end
+if state then
+        print("Auto Aura Off")
+    else
+        print("Auto Aura On")
+    end
+end)
+
+Section:NewToggle("Auto Buy Bodies", "Turn on for auto buy bodies", function(state)
+_G.autobuybodies = state
+if _G.autobuybodies then
+    print("Auto Buy Bodies On")
+    while _G.autobuybodies do
+        for i = 1, 200 do
+            local args = {
+                [1] = i,
+                [2] = "BodyUpgrade",
+                [3] = "Islands"
+            }
+            game:GetService("ReplicatedStorage").Remotes.Shop.RequestPurchase:InvokeServer(unpack(args))
+        end
+        wait(10)
+    end
+    print("Auto Buy Bodies Off")
+end
+end)
+local Section = Tab:NewSection("Eggs")
+Section:NewButton("Egg 1", "click to buy egg", function()
+    print("Clicked")
+local args = {
+    [1] = 1,
+    [2] = 1,
+    [3] = "Islands"
+}
+
+game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("Pets"):WaitForChild("PurchaseEgg"):InvokeServer(unpack(args))
+
+end)
+Section:NewButton("Egg 2", "click to buy egg", function()
+    print("Clicked")
+local args = {
+    [1] = 2,
+    [2] = 1,
+    [3] = "Islands"
+}
+
+game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("Pets"):WaitForChild("PurchaseEgg"):InvokeServer(unpack(args))
+
+end)
+Section:NewButton("Egg 3", "click to buy egg", function()
+    print("Clicked")
+local args = {
+    [1] = 3,
+    [2] = 1,
+    [3] = "Islands"
+}
+
+game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("Pets"):WaitForChild("PurchaseEgg"):InvokeServer(unpack(args))
+
+end)
+Section:NewButton("Egg 4", "click to buy egg", function()
+    print("Clicked")
+local args = {
+    [1] = 4,
+    [2] = 1,
+    [3] = "Islands"
+}
+
+game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("Pets"):WaitForChild("PurchaseEgg"):InvokeServer(unpack(args))
+
+end)
+Section:NewButton("Egg 5", "click to buy egg", function()
+    print("Clicked")
+local args = {
+    [1] = 5,
+    [2] = 1,
+    [3] = "Islands"
+}
+
+game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("Pets"):WaitForChild("PurchaseEgg"):InvokeServer(unpack(args))
+
+end)
+local Tab = Window:NewTab("Others")
+local Section = Tab:NewSection("Teleport")
+Section:NewButton("Sell Area", "TP TO SELL AREA", function()
+    print("Clicked")
+    for _, sellPoint in pairs(game.Workspace.RingAreas.RangeSystem.Server.Sell:GetChildren()) do
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = sellPoint.CFrame
+        wait(0.1)
+    end
+end)
+Section:NewButton("Pet Eggs", "TP TO Pet Eggs", function()
+    print("Clicked")
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(155.886597, 169.643463, -93.1495514, 0.568103552, -8.41595664e-08, -0.822957098, -3.89229593e-10, 1, -1.02533527e-07, 0.822957098, 5.85699773e-08, 0.568103552)
+end)
+Section:NewButton("Volcano Island", "TP TO Volcano Island", function()
+    print("Clicked")
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-765.507935, 157.903687, -348.960236, 0.353401482, -8.99733621e-08, 0.935471773, 3.63786832e-08, 1,8.24365713e-08, -0.935471773, 4.89802643e-09, 0.353401482)
+end)
+Section:NewButton("KOTH Island", "TP TO KOTH Island", function()
+    print("Clicked")
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(130.859497, 179.823059, -996.631042, 0.849273264, 1.65749503e-09, 0.527953506, 1.3838212e-09, 1,-5.36550537e-09, -0.527953506, 5.28737365e-09, 0.849273264)
+end)
+Section:NewButton("Ice Island", "TP TO Ice Island", function()
+    print("Clicked")
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(32.1077347, 174.635498, 978.139282, 0.983371377, -3.5495451e-09, -0.181605861, 2.38232492e-08, 1, 1.09454376e-07, 0.181605861, -1.11960745e-07, 0.983371377)
+end)
+Section:NewButton("Dead Island", "TP TO Dead Island", function()
+    print("Clicked")
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(914.110901, 160.184372, 709.730347, 0.781111777, 2.44362752e-08, 0.624391198, 1.39309462e-08, 1, -5.65637386e-08, -0.624391198, 5.28809636e-08, 0.781111777)
+end)
+Section:NewButton("Desert Island", "TP TO Desert Island", function()
+    print("Clicked")
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(1094.63562, 163.388016, -1119.55981, -0.833104312, 2.4244029e-08, -0.553115904, 1.64691585e-08, 1, 1.90258529e-08, 0.553115904, 6.74116674e-09, -0.833104312)
+end)
+Section:NewButton("Portal Shrinker", "TP TO Portal Shrinker", function()
+    print("Clicked")
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-973.803772, 179.125671, 839.041321, -0.77587086, 7.03069958e-08, -0.63089174, 2.97390712e-09, 1, 1.0778335e-07, 0.63089174, 8.17497465e-08, -0.77587086)
+end)
+Section:NewButton("Island Portal", "TP TO Island Portal", function()
+    print("Clicked")
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-170.09433, 173.137283, -97.8514175, -0.527229548, -1.71237975e-08, -0.849722922, -1.03290387e-09, 1, -1.95113259e-08, 0.849722922, -9.40926537e-09, -0.527229548)
+end)
+Section:NewButton("Main Land", "TP TO Main Land", function()
+    print("Clicked")
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(121.297173, 169.672409, -72.5643311, -0.918850005, 0, 0.394607037, 0, 1, 0, -0.394607037, 0, -0.918850005)
+end)
+Section:NewButton("Leaderboard", "TP TO LB", function()
+    print("Clicked")
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(944.826233, 179.267014, -269.434387, 0.115093067, -5.09142026e-08, -0.993354738, 4.14322834e-08, 1, -4.64543355e-08, 0.993354738, -3.58103804e-08, 0.115093067)
+end)
+local Section = Tab:NewSection("Mics")
+Section:NewSlider("WalkSpeed", "Set your walk speed (use with your own risk)", 500, 0, function(s) -- 500 (MaxValue) | 0 (MinValue)
+    game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = s
+end)
+Section:NewSlider("JumpPower", "Set your jump power (use with your own risk)", 500, 0, function(s) -- 500 (MaxValue) | 0 (MinValue)
+    game.Players.LocalPlayer.Character.Humanoid.JumpPower = s
+end)
+local Tab = Window:NewTab("Settings")
+local Section = Tab:NewSection("Settings")
+Section:NewKeybind("Hide UI", "Set your keybind for hide ui", Enum.KeyCode.RightControl, function()
+    Library:ToggleUI()
+end)
