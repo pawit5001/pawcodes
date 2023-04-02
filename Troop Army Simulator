@@ -1,0 +1,1079 @@
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
+local Window = Library.CreateLib("MBLover" , "BloodTheme")
+local Tab = Window:NewTab("Main")
+local Section = Tab:NewSection("Auto Farm")
+Section:NewToggle("Auto Power", "turn this on for auto power", function(state)
+_G.autopower = state;
+while _G.autopower do wait()
+    game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("GainPower"):FireServer()
+end    
+    if state then
+        print("Auto Power Off")
+    else
+        print("Auto Power On")
+    end
+end)
+Section:NewToggle("Auto Equip Best Troops", "turn on for auto equip best troops", function(state)
+_G.autoequipbestroops = state
+while _G.autoequipbestroops do wait()
+game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("EquipBestTroops"):InvokeServer()
+wait(5)
+end    
+    if state then
+        print("Best Troops Off")
+    else
+        print("Best Troops On")
+    end
+end)
+
+Section:NewToggle("Auto Claim Gifts", "turn on this for auto claim gifts", function(state)
+_G.autoclaimgift = state
+while _G.autoclaimgift do wait()
+for i = 1, 25 do
+    local args = {
+        [1] = tostring(i)
+    }
+    game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("ClaimGift"):InvokeServer(unpack(args))
+wait(.1)
+end
+end    
+    if state then
+        print("Auto Gifts Off")
+    else
+        print("Auto Gifts On")
+    end
+end)
+Section:NewToggle("Auto Daily Chest", "Auto TP To Daily Chest(TP Every 5 hrs)", function(state)
+_G.autodailychest = state
+while _G.autodailychest do wait()
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-9.52270699, 6.28042984, 31.2660313, 0.862572908, 2.31906547e-08, 0.505932808, 2.08258903e-08, 1, -8.13438135e-08, -0.505932808, 8.07014757e-08, 0.862572908)
+wait(18000)
+end    
+    if state then
+        print("Auto Daily Chest Off")
+    else
+        print("Auto Daily Chest On")
+    end
+end)
+local Section = Tab:NewSection("Auto Buy")
+Section:NewToggle("Auto Buy All Upgrades", "turn on for buy all upgrades", function(state)
+_G.autobuyallupgrades = state
+while _G.autobuyallupgrades do wait()
+local args = {
+    [1] = "Walk Speed",
+    [2] = "Storage",
+    [3] = "Critical Chance"
+
+}
+
+game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("BuyUpgrade"):InvokeServer(unpack(args))
+wait(.1)
+end    
+    if state then
+        print("All Upgrades Off")
+    else
+        print("All Upgrades On")
+    end
+end)
+local Section = Tab:NewSection("Pets")
+Section:NewToggle("Auto Equip Best Pets", "turn on for auto equip best pets", function(state)
+_G.autoequipbestpets = state
+while _G.autoequipbestpets do wait()
+game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("EquipBest"):InvokeServer()
+wait(5)
+end    
+    if state then
+        print("Best Pets Off")
+    else
+        print("Best Pets On")
+    end
+end)
+local Tab = Window:NewTab("Eggs")
+local Section = Tab:NewSection("Grasslands")
+Section:NewToggle("Common Egg", "Pet at zone1", function(state)
+    _G.autobuygrass = state
+    while _G.autobuygrass do wait()
+    local args = {
+        [1] = "Common Egg",
+        [2] = "1"
+    }
+    
+    game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("HatchEgg"):InvokeServer(unpack(args))
+    wait(.1)
+    end    
+    if state then
+        print("Auto Buy Eggs Off")
+    else
+        print("Auto Buy Eggs On")
+    end
+end)
+Section:NewToggle("Grass Egg", "Pet at zone1", function(state)
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
+local Window = Library.CreateLib("MBLover" , "BloodTheme")
+local Tab = Window:NewTab("Main")
+local Section = Tab:NewSection("Auto Farm")
+Section:NewToggle("Auto Power", "turn this on for auto power", function(state)
+_G.autopower = state;
+while _G.autopower do wait()
+    game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("GainPower"):FireServer()
+end    
+    if state then
+        print("Auto Power Off")
+    else
+        print("Auto Power On")
+    end
+end)
+Section:NewToggle("Auto Equip Best Troops", "turn on for auto equip best troops", function(state)
+_G.autoequipbestroops = state
+while _G.autoequipbestroops do wait()
+game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("EquipBestTroops"):InvokeServer()
+wait(5)
+end    
+    if state then
+        print("Best Troops Off")
+    else
+        print("Best Troops On")
+    end
+end)
+
+Section:NewToggle("Auto Claim Gifts", "turn on this for auto claim gifts", function(state)
+_G.autoclaimgift = state
+while _G.autoclaimgift do wait()
+for i = 1, 25 do
+    local args = {
+        [1] = tostring(i)
+    }
+    game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("ClaimGift"):InvokeServer(unpack(args))
+wait(.1)
+end
+end    
+    if state then
+        print("Auto Gifts Off")
+    else
+        print("Auto Gifts On")
+    end
+end)
+local Section = Tab:NewSection("Auto Buy")
+Section:NewToggle("Auto Buy All Upgrades", "turn on for buy all upgrades", function(state)
+_G.autobuyallupgrades = state
+while _G.autobuyallupgrades do wait()
+local args = {
+    [1] = "Walk Speed",
+    [2] = "Storage",
+    [3] = "Critical Chance"
+
+}
+
+game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("BuyUpgrade"):InvokeServer(unpack(args))
+wait(.1)
+end    
+    if state then
+        print("All Upgrades Off")
+    else
+        print("All Upgrades On")
+    end
+end)
+local Section = Tab:NewSection("Pets")
+Section:NewToggle("Auto Equip Best Pets", "turn on for auto equip best pets", function(state)
+_G.autoequipbestpets = state
+while _G.autoequipbestpets do wait()
+game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("EquipBest"):InvokeServer()
+wait(5)
+end    
+    if state then
+        print("Best Pets Off")
+    else
+        print("Best Pets On")
+    end
+end)
+local Tab = Window:NewTab("Eggs")
+local Section = Tab:NewSection("Grasslands")
+Section:NewToggle("Common Egg", "Pet at zone1", function(state)
+    _G.autobuy1 = state
+    while _G.autobuy1 do wait()
+    local args = {
+        [1] = "Common Egg",
+        [2] = "1"
+    }
+    
+    game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("HatchEgg"):InvokeServer(unpack(args))
+    wait(.1)
+    end    
+    if state then
+        print("Auto Buy Eggs Off")
+    else
+        print("Auto Buy Eggs On")
+    end
+end)
+Section:NewToggle("Grass Egg", "Pet at zone1", function(state)
+    _G.autobuy111 = state
+    while _G.autobuy111 do wait()
+    local args = {
+        [1] = "Grass Egg",
+        [2] = "1"
+    }
+    
+    game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("HatchEgg"):InvokeServer(unpack(args))
+    wait(.1)
+    end    
+    if state then
+        print("Auto Buy Eggs Off")
+    else
+        print("Auto Buy Eggs On")
+    end
+end)
+local Section = Tab:NewSection("Beach")
+Section:NewToggle("Beach Egg", "Pet at zone2", function(state)
+    _G.autobuy2 = state
+while _G.autobuy2 do wait()
+local args = {
+    [1] = "Beach Egg",
+    [2] = "1"
+}
+
+game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("HatchEgg"):InvokeServer(unpack(args))
+wait(.1)
+end
+    if state then
+        print("Auto Buy Eggs Off")
+    else
+        print("Auto Buy Eggs On")
+    end
+end)
+local Section = Tab:NewSection("Forest")
+Section:NewToggle("Forest Egg", "Pet at zone3", function(state)
+    _G.autobuy3 = state
+while _G.autobuy3 do wait()
+local args = {
+    [1] = "Forest Egg",
+    [2] = "1"
+}
+
+game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("HatchEgg"):InvokeServer(unpack(args))
+wait(.1)
+end
+    if state then
+        print("Auto Buy Eggs Off")
+    else
+        print("Auto Buy Eggs On")
+    end
+end)
+local Section = Tab:NewSection("Desert")
+Section:NewToggle("Desert Egg", "Pet at zone4", function(state)
+    _G.autobuy4 = state
+while _G.autobuy4 do wait()
+local args = {
+    [1] = "Desert Egg",
+    [2] = "1"
+}
+
+game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("HatchEgg"):InvokeServer(unpack(args))
+wait(.1)
+end
+    if state then
+        print("Auto Buy Eggs Off")
+    else
+        print("Auto Buy Eggs On")
+    end
+end)
+local Section = Tab:NewSection("Aquatic")
+Section:NewToggle("Aquatic Egg", "Pet at zone5", function(state)
+    _G.autobuy5 = state
+while _G.autobuy5 do wait()
+local args = {
+    [1] = "Aquatic Egg",
+    [2] = "1"
+}
+
+game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("HatchEgg"):InvokeServer(unpack(args))
+wait(.1)
+end
+    if state then
+        print("Auto Buy Eggs Off")
+    else
+        print("Auto Buy Eggs On")
+    end
+end)
+local Section = Tab:NewSection("Snowy Mountains")
+Section:NewToggle("Snowy Egg", "Pet at zone6", function(state)
+    _G.autobuy6 = state
+while _G.autobuy6 do wait()
+local args = {
+    [1] = "Snowy Egg",
+    [2] = "1"
+}
+
+game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("HatchEgg"):InvokeServer(unpack(args))
+wait(.1)
+end
+    if state then
+        print("Auto Buy Eggs Off")
+    else
+        print("Auto Buy Eggs On")
+    end
+end)
+local Section = Tab:NewSection("Jungle")
+Section:NewToggle("Jungle Egg", "Pet at zone7", function(state)
+    _G.autobuy7 = state
+while _G.autobuy7 do wait()
+local args = {
+    [1] = "Jungle Egg",
+    [2] = "1"
+}
+
+game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("HatchEgg"):InvokeServer(unpack(args))
+wait(.1)
+end
+    if state then
+        print("Auto Buy Eggs Off")
+    else
+        print("Auto Buy Eggs On")
+    end
+end)
+local Section = Tab:NewSection("Glacier")
+Section:NewToggle("Frozen Egg", "Pet at zone8", function(state)
+    _G.autobuy8 = state
+while _G.autobuy8 do wait()
+local args = {
+    [1] = "Frozen Egg",
+    [2] = "1"
+}
+
+game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("HatchEgg"):InvokeServer(unpack(args))
+wait(.1)
+end
+    if state then
+        print("Auto Buy Eggs Off")
+    else
+        print("Auto Buy Eggs On")
+    end
+end)
+local Section = Tab:NewSection("Dry Forest")
+Section:NewToggle("Dry Egg", "Pet at zone9", function(state)
+    _G.autobuy9 = state
+while _G.autobuy9 do wait()
+local args = {
+    [1] = "Dry Egg",
+    [2] = "1"
+}
+
+game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("HatchEgg"):InvokeServer(unpack(args))
+wait(.1)
+end
+    if state then
+        print("Auto Buy Eggs Off")
+    else
+        print("Auto Buy Eggs On")
+    end
+end)
+local Section = Tab:NewSection("Savannah")
+Section:NewToggle("Savanna Egg", "Pet at zone10", function(state)
+    _G.autobuy10 = state
+while _G.autobuy10 do wait()
+local args = {
+    [1] = "Savanna Egg",
+    [2] = "1"
+}
+
+game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("HatchEgg"):InvokeServer(unpack(args))
+wait(.1)
+end
+    if state then
+        print("Auto Buy Eggs Off")
+    else
+        print("Auto Buy Eggs On")
+    end
+end)
+local Section = Tab:NewSection("Laboratory")
+Section:NewToggle("Lab Egg", "Pet at zone11", function(state)
+    _G.autobuy11 = state
+while _G.autobuy11 do wait()
+local args = {
+    [1] = "Lab Egg",
+    [2] = "1"
+}
+
+game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("HatchEgg"):InvokeServer(unpack(args))
+wait(.1)
+end
+    if state then
+        print("Auto Buy Eggs Off")
+    else
+        print("Auto Buy Eggs On")
+    end
+end)
+local Section = Tab:NewSection("Cavern")
+Section:NewToggle("Cavern Egg", "Pet at zone12", function(state)
+    _G.autobuy12 = state
+while _G.autobuy12 do wait()
+local args = {
+    [1] = "Cavern Egg",
+    [2] = "1"
+}
+
+game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("HatchEgg"):InvokeServer(unpack(args))
+wait(.1)
+end
+    if state then
+        print("Auto Buy Eggs Off")
+    else
+        print("Auto Buy Eggs On")
+    end
+end)
+local Section = Tab:NewSection("Volcano")
+Section:NewToggle("Volcano Egg", "Pet at zone13", function(state)
+    _G.autobuy13 = state
+while _G.autobuy13 do wait()
+local args = {
+    [1] = "Volcano Egg",
+    [2] = "1"
+}
+
+game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("HatchEgg"):InvokeServer(unpack(args))
+wait(.1)
+end
+    if state then
+        print("Auto Buy Eggs Off")
+    else
+        print("Auto Buy Eggs On")
+    end
+end)
+
+
+local Tab = Window:NewTab("Mobs")
+local Tab = Window:NewTab("Teleport")
+local Tab = Window:NewTab("Mics")    
+    if state then
+        print("Auto Buy Eggs Off")
+    else
+        print("Auto Buy Eggs On")
+    end
+end)
+local Section = Tab:NewSection("Beach")
+Section:NewToggle("Beach Egg", "Pet at zone2", function(state)
+    if state then
+        print("Auto Buy Eggs Off")
+    else
+        print("Auto Buy Eggs On")
+    end
+end)
+local Section = Tab:NewSection("Forest")
+Section:NewToggle("Forest Egg", "Pet at zone3", function(state)
+    if state then
+        print("Auto Buy Eggs Off")
+    else
+        print("Auto Buy Eggs On")
+    end
+end)
+local Section = Tab:NewSection("Desert")
+Section:NewToggle("Desert Egg", "Pet at zone4", function(state)
+    if state then
+        print("Auto Buy Eggs Off")
+    else
+        print("Auto Buy Eggs On")
+    end
+end)
+local Section = Tab:NewSection("Aquatic")
+Section:NewToggle("Aquatic Egg", "Pet at zone5", function(state)
+    if state then
+        print("Auto Buy Eggs Off")
+    else
+        print("Auto Buy Eggs On")
+    end
+end)
+local Section = Tab:NewSection("Snowy Mountains")
+Section:NewToggle("Snowy Egg", "Pet at zone6", function(state)
+    if state then
+        print("Auto Buy Eggs Off")
+    else
+        print("Auto Buy Eggs On")
+    end
+end)
+local Section = Tab:NewSection("Jungle")
+Section:NewToggle("Jungle Egg", "Pet at zone7", function(state)
+    if state then
+        print("Auto Buy Eggs Off")
+    else
+        print("Auto Buy Eggs On")
+    end
+end)
+local Section = Tab:NewSection("Glacier")
+Section:NewToggle("Frozen Egg", "Pet at zone8", function(state)
+    if state then
+        print("Auto Buy Eggs Off")
+    else
+        print("Auto Buy Eggs On")
+    end
+end)
+local Section = Tab:NewSection("Dry Forest")
+Section:NewToggle("Dry Egg", "Pet at zone9", function(state)
+    if state then
+        print("Auto Buy Eggs Off")
+    else
+        print("Auto Buy Eggs On")
+    end
+end)
+local Section = Tab:NewSection("Savannah")
+Section:NewToggle("Savanna Egg", "Pet at zone10", function(state)
+    if state then
+        print("Auto Buy Eggs Off")
+    else
+        print("Auto Buy Eggs On")
+    end
+end)
+local Section = Tab:NewSection("Laboratory")
+Section:NewToggle("Lab Egg", "Pet at zone11", function(state)
+    if state then
+        print("Auto Buy Eggs Off")
+    else
+        print("Auto Buy Eggs On")
+    end
+end)
+local Section = Tab:NewSection("Cavern")
+Section:NewToggle("Cavern Egg", "Pet at zone12", function(state)
+    if state then
+        print("Auto Buy Eggs Off")
+    else
+        print("Auto Buy Eggs On")
+    end
+end)
+local Section = Tab:NewSection("Volcano")
+Section:NewToggle("Volcano Egg", "Pet at zone13", function(state)
+    if state then
+        print("Auto Buy Eggs Off")
+    else
+        print("Auto Buy Eggs On")
+    end
+end)
+
+local Tab = Window:NewTab("Mobs")
+local Section = Tab:NewSection("Kil All Mobs (might take a few secs to stop )")
+Section:NewToggle("Grasslands", "Kill all mobs in zone1", function(state)
+    _G.autokillallmobszone1 = state
+
+while _G.autokillallmobszone1 do
+    wait()
+
+    local function getTroopsData(player)
+        return {
+            [1] = player.TroopsData["328644633"],
+            [2] = player.TroopsData["68466455"],
+            [3] = player.TroopsData["856798601"],
+            [4] = player.TroopsData["842785635"],
+        }
+    end
+
+    local zone = game:GetService("Workspace").Enemies.Zone1
+
+    for _, mob in ipairs(zone:GetChildren()) do
+        if mob:IsA("Model") then
+            local args = {
+                [1] = getTroopsData(game.Players.LocalPlayer),
+                [2] = mob,
+            }
+
+            game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("DamageEnemy"):InvokeServer(unpack(args))
+        end
+    end
+end
+
+    if state then
+        print("Auto Kill Mobs Off")
+    else
+        print("Auto Kill Mobs On")
+    end
+end)
+Section:NewToggle("Beach", "Kill all mobs in zone2", function(state)
+    _G.autokillallmobszone2 = state
+
+while _G.autokillallmobszone2 do
+    wait()
+
+    local function getTroopsData(player)
+        return {
+            [1] = player.TroopsData["328644633"],
+            [2] = player.TroopsData["68466455"],
+            [3] = player.TroopsData["856798601"],
+            [4] = player.TroopsData["842785635"],
+        }
+    end
+
+    local zone = game:GetService("Workspace").Enemies.Zone2
+
+    for _, mob in ipairs(zone:GetChildren()) do
+        if mob:IsA("Model") then
+            local args = {
+                [1] = getTroopsData(game.Players.LocalPlayer),
+                [2] = mob,
+            }
+
+            game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("DamageEnemy"):InvokeServer(unpack(args))
+        end
+    end
+end
+
+    if state then
+        print("Auto Kill Mobs Off")
+    else
+        print("Auto Kill Mobs On")
+    end
+end)
+Section:NewToggle("Forest", "Kill all mobs in zone3", function(state)
+    _G.autokillallmobszone3 = state
+
+while _G.autokillallmobszone3 do
+    wait()
+
+    local function getTroopsData(player)
+        return {
+            [1] = player.TroopsData["328644633"],
+            [2] = player.TroopsData["68466455"],
+            [3] = player.TroopsData["856798601"],
+            [4] = player.TroopsData["842785635"],
+        }
+    end
+
+    local zone = game:GetService("Workspace").Enemies.Zone3
+
+    for _, mob in ipairs(zone:GetChildren()) do
+        if mob:IsA("Model") then
+            local args = {
+                [1] = getTroopsData(game.Players.LocalPlayer),
+                [2] = mob,
+            }
+
+            game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("DamageEnemy"):InvokeServer(unpack(args))
+        end
+    end
+end
+
+    if state then
+        print("Auto Kill Mobs Off")
+    else
+        print("Auto Kill Mobs On")
+    end
+end)
+Section:NewToggle("Desert", "Kill all mobs in zone4", function(state)
+    _G.autokillallmobszone4 = state
+
+while _G.autokillallmobszone4 do
+    wait()
+
+    local function getTroopsData(player)
+        return {
+            [1] = player.TroopsData["328644633"],
+            [2] = player.TroopsData["68466455"],
+            [3] = player.TroopsData["856798601"],
+            [4] = player.TroopsData["842785635"],
+        }
+    end
+
+    local zone = game:GetService("Workspace").Enemies.Zone4
+
+    for _, mob in ipairs(zone:GetChildren()) do
+        if mob:IsA("Model") then
+            local args = {
+                [1] = getTroopsData(game.Players.LocalPlayer),
+                [2] = mob,
+            }
+
+            game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("DamageEnemy"):InvokeServer(unpack(args))
+        end
+    end
+end
+
+    if state then
+        print("Auto Kill Mobs Off")
+    else
+        print("Auto Kill Mobs On")
+    end
+end)
+Section:NewToggle("Aquatic", "Kill all mobs in zone5", function(state)
+    _G.autokillallmobszone5 = state
+
+while _G.autokillallmobszone5 do
+    wait()
+
+    local function getTroopsData(player)
+        return {
+            [1] = player.TroopsData["328644633"],
+            [2] = player.TroopsData["68466455"],
+            [3] = player.TroopsData["856798601"],
+            [4] = player.TroopsData["842785635"],
+        }
+    end
+
+    local zone = game:GetService("Workspace").Enemies.Zone5
+
+    for _, mob in ipairs(zone:GetChildren()) do
+        if mob:IsA("Model") then
+            local args = {
+                [1] = getTroopsData(game.Players.LocalPlayer),
+                [2] = mob,
+            }
+
+            game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("DamageEnemy"):InvokeServer(unpack(args))
+        end
+    end
+end
+
+    if state then
+        print("Auto Kill Mobs Off")
+    else
+        print("Auto Kill Mobs On")
+    end
+end)
+Section:NewToggle("Snowy Mountains", "Kill all mobs in zone6", function(state)
+    _G.autokillallmobszone6 = state
+
+while _G.autokillallmobszone6 do
+    wait()
+
+    local function getTroopsData(player)
+        return {
+            [1] = player.TroopsData["328644633"],
+            [2] = player.TroopsData["68466455"],
+            [3] = player.TroopsData["856798601"],
+            [4] = player.TroopsData["842785635"],
+        }
+    end
+
+    local zone = game:GetService("Workspace").Enemies.Zone6
+
+    for _, mob in ipairs(zone:GetChildren()) do
+        if mob:IsA("Model") then
+            local args = {
+                [1] = getTroopsData(game.Players.LocalPlayer),
+                [2] = mob,
+            }
+
+            game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("DamageEnemy"):InvokeServer(unpack(args))
+        end
+    end
+end
+
+    if state then
+        print("Auto Kill Mobs Off")
+    else
+        print("Auto Kill Mobs On")
+    end
+end)
+Section:NewToggle("Jungle", "Kill all mobs in zone7", function(state)
+    _G.autokillallmobszone7 = state
+
+while _G.autokillallmobszone7 do
+    wait()
+
+    local function getTroopsData(player)
+        return {
+            [1] = player.TroopsData["328644633"],
+            [2] = player.TroopsData["68466455"],
+            [3] = player.TroopsData["856798601"],
+            [4] = player.TroopsData["842785635"],
+        }
+    end
+
+    local zone = game:GetService("Workspace").Enemies.Zone7
+
+    for _, mob in ipairs(zone:GetChildren()) do
+        if mob:IsA("Model") then
+            local args = {
+                [1] = getTroopsData(game.Players.LocalPlayer),
+                [2] = mob,
+            }
+
+            game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("DamageEnemy"):InvokeServer(unpack(args))
+        end
+    end
+end
+
+    if state then
+        print("Auto Kill Mobs Off")
+    else
+        print("Auto Kill Mobs On")
+    end
+end)
+Section:NewToggle("Glacier", "Kill all mobs in zone8", function(state)
+    _G.autokillallmobszone8 = state
+
+while _G.autokillallmobszone8 do
+    wait()
+
+    local function getTroopsData(player)
+        return {
+            [1] = player.TroopsData["328644633"],
+            [2] = player.TroopsData["68466455"],
+            [3] = player.TroopsData["856798601"],
+            [4] = player.TroopsData["842785635"],
+        }
+    end
+
+    local zone = game:GetService("Workspace").Enemies.Zone8
+
+    for _, mob in ipairs(zone:GetChildren()) do
+        if mob:IsA("Model") then
+            local args = {
+                [1] = getTroopsData(game.Players.LocalPlayer),
+                [2] = mob,
+            }
+
+            game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("DamageEnemy"):InvokeServer(unpack(args))
+        end
+    end
+end
+
+    if state then
+        print("Auto Kill Mobs Off")
+    else
+        print("Auto Kill Mobs On")
+    end
+end)
+Section:NewToggle("Dry Forest", "Kill all mobs in zone9", function(state)
+    _G.autokillallmobszone9 = state
+
+while _G.autokillallmobszone9 do
+    wait()
+
+    local function getTroopsData(player)
+        return {
+            [1] = player.TroopsData["328644633"],
+            [2] = player.TroopsData["68466455"],
+            [3] = player.TroopsData["856798601"],
+            [4] = player.TroopsData["842785635"],
+        }
+    end
+
+    local zone = game:GetService("Workspace").Enemies.Zone9
+
+    for _, mob in ipairs(zone:GetChildren()) do
+        if mob:IsA("Model") then
+            local args = {
+                [1] = getTroopsData(game.Players.LocalPlayer),
+                [2] = mob,
+            }
+
+            game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("DamageEnemy"):InvokeServer(unpack(args))
+        end
+    end
+end
+
+    if state then
+        print("Auto Kill Mobs Off")
+    else
+        print("Auto Kill Mobs On")
+    end
+end)
+Section:NewToggle("Savannah", "Kill all mobs in zone10", function(state)
+    _G.autokillallmobszone10 = state
+
+while _G.autokillallmobszone10 do
+    wait()
+
+    local function getTroopsData(player)
+        return {
+            [1] = player.TroopsData["328644633"],
+            [2] = player.TroopsData["68466455"],
+            [3] = player.TroopsData["856798601"],
+            [4] = player.TroopsData["842785635"],
+        }
+    end
+
+    local zone = game:GetService("Workspace").Enemies.Zone10
+
+    for _, mob in ipairs(zone:GetChildren()) do
+        if mob:IsA("Model") then
+            local args = {
+                [1] = getTroopsData(game.Players.LocalPlayer),
+                [2] = mob,
+            }
+
+            game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("DamageEnemy"):InvokeServer(unpack(args))
+        end
+    end
+end
+
+    if state then
+        print("Auto Kill Mobs Off")
+    else
+        print("Auto Kill Mobs On")
+    end
+end)
+Section:NewToggle("Laboratory", "Kill all mobs in zone11", function(state)
+    _G.autokillallmobszone11 = state
+
+while _G.autokillallmobszone11 do
+    wait()
+
+    local function getTroopsData(player)
+        return {
+            [1] = player.TroopsData["328644633"],
+            [2] = player.TroopsData["68466455"],
+            [3] = player.TroopsData["856798601"],
+            [4] = player.TroopsData["842785635"],
+        }
+    end
+
+    local zone = game:GetService("Workspace").Enemies.Zone11
+
+    for _, mob in ipairs(zone:GetChildren()) do
+        if mob:IsA("Model") then
+            local args = {
+                [1] = getTroopsData(game.Players.LocalPlayer),
+                [2] = mob,
+            }
+
+            game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("DamageEnemy"):InvokeServer(unpack(args))
+        end
+    end
+end
+
+    if state then
+        print("Auto Kill Mobs Off")
+    else
+        print("Auto Kill Mobs On")
+    end
+end)
+Section:NewToggle("Cavern", "Kill all mobs in zone12", function(state)
+    _G.autokillallmobszone12 = state
+
+while _G.autokillallmobszone12 do
+    wait()
+
+    local function getTroopsData(player)
+        return {
+            [1] = player.TroopsData["328644633"],
+            [2] = player.TroopsData["68466455"],
+            [3] = player.TroopsData["856798601"],
+            [4] = player.TroopsData["842785635"],
+        }
+    end
+
+    local zone = game:GetService("Workspace").Enemies.Zone12
+
+    for _, mob in ipairs(zone:GetChildren()) do
+        if mob:IsA("Model") then
+            local args = {
+                [1] = getTroopsData(game.Players.LocalPlayer),
+                [2] = mob,
+            }
+
+            game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("DamageEnemy"):InvokeServer(unpack(args))
+        end
+    end
+end
+
+    if state then
+        print("Auto Kill Mobs Off")
+    else
+        print("Auto Kill Mobs On")
+    end
+end)
+Section:NewToggle("Volcano", "Kill all mobs in zone13", function(state)
+    _G.autokillallmobszone13 = state
+
+while _G.autokillallmobszone13 do
+    wait()
+
+    local function getTroopsData(player)
+        return {
+            [1] = player.TroopsData["328644633"],
+            [2] = player.TroopsData["68466455"],
+            [3] = player.TroopsData["856798601"],
+            [4] = player.TroopsData["842785635"],
+        }
+    end
+
+    local zone = game:GetService("Workspace").Enemies.Zone13
+
+    for _, mob in ipairs(zone:GetChildren()) do
+        if mob:IsA("Model") then
+            local args = {
+                [1] = getTroopsData(game.Players.LocalPlayer),
+                [2] = mob,
+            }
+
+            game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("DamageEnemy"):InvokeServer(unpack(args))
+        end
+    end
+end
+
+    if state then
+        print("Auto Kill Mobs Off")
+    else
+        print("Auto Kill Mobs On")
+    end
+end)
+
+local Tab = Window:NewTab("Teleport")
+local Section = Tab:NewSection("Teleport to Area")
+Section:NewButton("Dungeon", "TP TO DUNGEON LOBBY", function()
+    print("Clicked")
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-20780.75, -51.4020119, 9695.70117, 1, 6.08178452e-10, 4.6695195e-14, -6.08178452e-10, 1, 2.50712917e-09, -4.66936704e-14, -2.50712917e-09, 1)
+end)
+Section:NewButton("Grasslands", "TP TO ZONE1", function()
+    print("Clicked")
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-23.882576, 4.19802284, 84.8824768, 1, 5.50664012e-08, -9.07461633e-14, -5.50664012e-08, 1, -4.08289793e-08, 8.849786e-14, 4.08289793e-08, 1)
+end)
+Section:NewButton("Beach", "TP TO ZONE2", function()
+    print("Clicked")
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(209.74176, 7.19807243, 222.144012, 0.956294656, -7.9281385e-08, -0.292404652, 6.89465196e-08, 1, -4.56497204e-08, 0.292404652, 2.34942998e-08, 0.956294656)
+end)
+Section:NewButton("Forest", "TP TO ZONE3", function()
+    print("Clicked")
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(396.679688, 7.19815779, 182.759125, 0.92051065, 4.78026436e-08, 0.390717477, -4.95372277e-08, 1, -5.63859892e-09, -0.390717477, -1.41646694e-08, 0.92051065)
+end)
+Section:NewButton("Desert", "TP TO ZONE4", function()
+    print("Clicked")
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(607.093201, 10.1982088, 171.885315, -0.942770183, 1.59744999e-08, -0.333443284, 1.6946256e-08, 1, -5.77289778e-12, 0.333443284, -5.6560574e-09, -0.942770183)
+end)
+Section:NewButton("Aquatic", "TP TO ZONE5", function()
+    print("Clicked")
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(766.644226, 10.1982203, 125.037308, -0.712723136, -4.99243633e-08, -0.70144546, -4.09128331e-09, 1, -6.70164866e-08, 0.70144546, -4.48943887e-08, -0.712723136)
+end)
+Section:NewButton("Snowy Mountains", "TP TO ZONE6", function()
+    print("Clicked")
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(976.208069, 13.1661367, 92.5398254, 0.890994847, 5.91016374e-08, 0.454013437, -2.85325648e-08, 1, -7.41812158e-08, -0.454013437, 5.31409121e-08, 0.890994847)
+end)
+Section:NewButton("Jungle", "TP TO ZONE7", function()
+    print("Clicked")
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(1145.46582, 13.139823, 64.4532471, 0.999388874, 6.76225582e-08, 0.0349550731, -6.54561134e-08, 1, -6.31223429e-08, -0.0349550731, 6.07957489e-08, 0.999388874)
+end)
+Section:NewButton("Glacier", "TP TO ZONE8", function()
+    print("Clicked")
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(1342.91211, 13.1661444, 62.8771629, 0.927179396, -8.38139513e-09, 0.374617696, 9.82587234e-10, 1, 1.99412931e-08, -0.374617696, -1.81210602e-08, 0.927179396)
+end)
+Section:NewButton("Dry Forest", "TP TO ZONE9", function()
+    print("Clicked")
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(1500.8606, 13.1661501, 9.36489773, 0.953922927, -6.02540149e-06, 0.300051749, 6.31717876e-06, 1, -2.33211739e-09, -0.300051749, 1.89770526e-06, 0.953922927)
+end)
+Section:NewButton("Savannah", "TP TO ZONE10", function()
+    print("Clicked")
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(1695.81885, 13.1661539, 18.0612068, -0.20893012, -1.00465184e-06, -0.977930546, -4.81574898e-06, 1, 1.53707758e-09, 0.977930546, 4.70978921e-06, -0.20893012)
+end)
+Section:NewButton("Laboratory", "TP TO ZONE11", function()
+    print("Clicked")
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(1847.33752, 13.1661654, -55.5333557, 0.99254024, 4.80916817e-08, 0.121917672, -5.44291794e-08, 1, 4.8651426e-08, -0.121917672, -5.49243744e-08, 0.99254024)
+end)
+Section:NewButton("Cavern", "TP TO ZONE12", function()
+    print("Clicked")
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(2010.94055, 13.1661692, -64.3659515, -0.222548842, 4.9921814e-06, -0.974921525, 2.25051972e-05, 1, -1.67440515e-08, 0.974921525, -2.19445283e-05, -0.222548842)
+end)
+Section:NewButton("Volcano", "TP TO ZONE13", function()
+    print("Clicked")
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(2174.87061, 13.1661768, -95.1960449, 0.998631775, 2.20981722e-08, -0.0522932447, -1.69152958e-08, 1, 9.95543701e-08, 0.0522932447, -9.85336044e-08, 0.998631775)
+end)
+
+local Tab = Window:NewTab("Mics")
+local Section = Tab:NewSection("use with your own risk")
+Section:NewSlider("WalkSpeed", "Set your walk speed (use with your own risk)", 500, 0, function(s) -- 500 (MaxValue) | 0 (MinValue)
+    game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = s
+end)
+Section:NewSlider("JumpPower", "Set your jump power (use with your own risk)", 500, 0, function(s) -- 500 (MaxValue) | 0 (MinValue)
+    game.Players.LocalPlayer.Character.Humanoid.JumpPower = s
+end)
+
+local Tab = Window:NewTab("Settings")
+local Section = Tab:NewSection("Settings")
+Section:NewKeybind("Hide UI", "Set your keybind for hide ui", Enum.KeyCode.RightControl, function()
+    Library:ToggleUI()
+end)
