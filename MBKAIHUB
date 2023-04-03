@@ -3,6 +3,7 @@ local PlaceId = game.PlaceId
 --Get Huge Simulator
 --Strong Muscle Simulator
 --Troop Army Simulator
+--Anime Lost Simulator#still-in-devs
 
 
 if PlaceId == 10945472407 then
