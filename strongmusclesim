@@ -1,0 +1,736 @@
+local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/pawit5001/pawcodes/main/uithankstoOrionLib')))()
+local Window = OrionLib:MakeWindow({Name = "MBLover", HidePremium = false, SaveConfig = true, ConfigFolder = "MB"})
+local Tab = Window:MakeTab({
+	Name = "Main",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+local Section = Tab:AddSection({
+	Name = "Auto Farm"
+})
+Tab:AddToggle({
+    Name = "Auto Muscle",
+    Default = state,
+    Callback = function(Value)
+        _G.automuscle = Value
+        while _G.automuscle do
+            wait()
+            local tool = game:GetService("Players").LocalPlayer.Character:FindFirstChildOfClass("Tool")
+            if tool then
+                local args = {
+                    [1] = tool.Name
+                }
+                game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("Weight"):FireServer(unpack(args))
+                wait(.1)
+            end
+            local args = {
+                [1] = "NumberOne",
+                [2] = Value 
+            }
+            game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("SkillToggle"):FireServer(unpack(args))
+        end
+    end    
+})
+
+Tab:AddToggle({
+    Name = "Auto Rebirth",
+    Default = state,
+    Callback = function(state)
+_G.autorebirth = state
+while _G.autorebirth do wait()
+game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("Rebirth"):FireServer()
+wait()
+end
+    end
+})
+
+Tab:AddToggle({
+    Name = "Auto Easter -OP Might make you lag-",
+    Default = false,
+    Callback = function(Value)
+        _G.autoeaster = Value
+        while _G.autoeaster do
+            for i,v in pairs(game:GetService("Workspace").NPCS:GetDescendants()) do
+                if v:IsA("Humanoid") and v.Parent:FindFirstChild("HumanoidRootPart") then
+                    local distance = (v.Parent.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude
+                    if distance <= math.huge then 
+                        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.Parent.HumanoidRootPart.CFrame + Vector3.new(0, 3, 2)
+                    end
+                end
+            end
+
+            game:GetService("ReplicatedStorage").Skills:WaitForChild("GroundPunchFolder"):WaitForChild("RemoteEvent"):FireServer()
+            game:GetService("ReplicatedStorage").Skills:WaitForChild("LightningStrikeFolder"):WaitForChild("RemoteEvent"):FireServer()
+            game:GetService("ReplicatedStorage").Skills:WaitForChild("KamehamehaFolder"):WaitForChild("RemoteEvent"):FireServer()
+            game:GetService("ReplicatedStorage").Skills:WaitForChild("SmashFolder"):WaitForChild("RemoteEvent"):FireServer()
+            game:GetService("ReplicatedStorage").Skills:WaitForChild("MultiplePunchesFolder"):WaitForChild("RemoteEvent"):FireServer()
+
+            local args = {
+                [1] = "Left"
+            }
+            game:GetService("ReplicatedStorage").Skills.CombatFolder.RemoteEvent:FireServer(unpack(args))
+
+            local args = {
+                [1] = "Right"
+            }
+            game:GetService("ReplicatedStorage").Skills.CombatFolder.RemoteEvent:FireServer(unpack(args))
+
+            local args = {
+                [1] = "NumberTwo",
+                [2] = true
+            }
+            game:GetService("ReplicatedStorage").Events.SkillToggle:FireServer(unpack(args))
+            wait(.1)
+        end 
+        print(Value)
+    end    
+})
+
+local Section = Tab:AddSection({
+	Name = "Auto Upgrades"
+})
+
+Tab:AddToggle({
+    Name = "Muscle Multiplier",
+    Default = state,
+    Callback = function(state)
+_G.autoupgrade1 = state
+while _G.autoupgrade1 do wait()
+    local args = {
+    [1] = "Muscle",
+    [2] = "Gem"
+}
+
+game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("Upgrade"):FireServer(unpack(args))
+wait(1)
+end
+    end
+})
+
+Tab:AddToggle({
+    Name = "More Gem",
+    Default = state,
+    Callback = function(state)
+_G.autoupgrade2 = state
+while _G.autoupgrade2 do wait()
+    local args = {
+    [1] = "Gem",
+    [2] = "Gem"
+}
+
+game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("Upgrade"):FireServer(unpack(args))
+wait(1)
+end
+    end
+})
+
+Tab:AddToggle({
+    Name = "More Win",
+    Default = state,
+    Callback = function(state)
+_G.autoupgrade3 = state
+while _G.autoupgrade3 do wait()
+    local args = {
+    [1] = "Win",
+    [2] = "Win"
+}
+
+game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("Upgrade"):FireServer(unpack(args))
+wait(1)
+end
+    end
+})
+
+Tab:AddToggle({
+    Name = "Pet Storage",
+    Default = state,
+    Callback = function(state)
+_G.autoupgrade4 = state
+while _G.autoupgrade4 do wait()
+    local args = {
+    [1] = "Storage",
+    [2] = "Gem"
+}
+
+game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("Upgrade"):FireServer(unpack(args))
+wait(1)
+end
+    end
+})
+
+Tab:AddToggle({
+    Name = "Pet Luck",
+    Default = state,
+    Callback = function(state)
+_G.autoupgrade5 = state
+while _G.autoupgrade5 do wait()
+    local args = {
+    [1] = "Luck",
+    [2] = "Gem"
+}
+
+game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("Upgrade"):FireServer(unpack(args))
+wait(1)
+end
+    end
+})
+
+Tab:AddToggle({
+    Name = "Pet Equip",
+    Default = state,
+    Callback = function(state)
+_G.autoupgrade6 = state
+while _G.autoupgrade6 do wait()
+    local args = {
+    [1] = "Equip",
+    [2] = "Gem"
+}
+
+game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("Upgrade"):FireServer(unpack(args))
+wait(1)
+endait()
+end
+    end
+})
+
+Tab:AddToggle({
+    Name = "Speed",
+    Default = state,
+    Callback = function(state)
+_G.autoupgrade7 = state
+while _G.autoupgrade7 do wait()
+    local args = {
+    [1] = "Speed",
+    [2] = "Gem"
+}
+
+game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("Upgrade"):FireServer(unpack(args))
+wait(1)
+end
+    end
+})
+
+Tab:AddToggle({
+    Name = "Cheaper Rebirths",
+    Default = state,
+    Callback = function(state)
+_G.autoupgrade8 = state
+while _G.autoupgrade8 do wait()
+    local args = {
+    [1] = "Rebirth",
+    [2] = "Gem"
+}
+
+game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("Upgrade"):FireServer(unpack(args))
+wait(1)
+end
+    end
+})
+
+Tab:AddToggle({
+    Name = "More Tokens",
+    Default = state,
+    Callback = function(state)
+_G.autoupgrade9 = state
+while _G.autoupgrade9 do wait()
+    local args = {
+    [1] = "Tokens",
+    [2] = "Gem"
+}
+
+game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("Upgrade"):FireServer(unpack(args))
+wait(1)
+end
+    end
+})
+
+
+local Section = Tab:AddSection({
+	Name = "Auto Buy"
+})
+
+Tab:AddToggle({
+    Name = "Auto Buy Auras",
+    Default = state,
+    Callback = function(state)
+_G.autobuyaura = state
+while _G.autobuyaura do wait()
+local auraNames = {}
+for _, aura in ipairs(game:GetService("ReplicatedStorage").Auras:GetChildren()) do
+    table.insert(auraNames, aura.Name)
+end
+
+local args = {
+    [1] = "Unlock",
+    [2] = auraNames[2]
+}
+
+game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("Aura"):FireServer(unpack(args))
+wait()
+end
+    end
+})
+
+Tab:AddToggle({
+Name = "Auto Buy Skills",
+Default = state,
+Callback = function(state)
+_G.autobuyskills = state
+while _G.autobuyskills do
+wait()
+local args = {
+[1] = {"Skill1", "Skill2", "Skill3"},
+[2] = "Win"
+}
+game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("SkillBuy"):FireServer(unpack(args))
+wait()
+end
+end
+})
+
+Tab:AddToggle({
+Name = "Auto Buy Next Area",
+Default = false,
+Callback = function(value)
+_G.autobuynewzone = value
+while _G.autobuynewzone do
+local args = {
+"Jungle",
+"Space",
+"Beach",
+"Forest",
+"Desert",
+"Hell",
+"Candy",
+"KOFT",
+"Void",
+"Anime",
+"Moon",
+"Heaven"
+}
+game:GetService("ReplicatedStorage").Events.BuyZone:FireServer(unpack(args))
+wait(20)
+end
+end
+})
+
+local Section = Tab:AddSection({
+	Name = "Pets"
+})
+Tab:AddToggle({
+    Name = "Auto Equip Best Pets",
+    Default = state,
+    Callback = function(state)
+        _G.autoequipbestpets = state
+        while _G.autoequipbestpets do wait()
+            local args = {
+                [1] = "Equip Best"
+            }
+
+            game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("PetAction"):InvokeServer(unpack(args))
+            wait(10)
+        end
+    end
+})
+Tab:AddToggle({
+    Name = "Auto Craft All Pets",
+    Default = state,
+    Callback = function(state)
+        _G.autoecraftallpets = state
+        while _G.autoecraftallpets do wait()
+            local args = {
+                [1] = "Craft All"
+            }
+
+            game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("PetAction"):InvokeServer(unpack(args))
+            wait(10)
+        end
+    end
+})
+
+local Tab = Window:MakeTab({
+	Name = "Eggs",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+
+local Section = Tab:AddSection({
+	Name = "Auto Buy Eggs"
+})
+
+Tab:AddToggle({
+    Name = "Baisc Egg",
+    Default = state,
+    Callback = function(state)
+_G.autobuyegg1 = state
+while _G.autobuyegg1 do wait()
+local args = {
+    [1] = "Basic",
+    [2] = 1
+}
+
+game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("HatchEgg"):InvokeServer(unpack(args))
+    
+wait()
+end
+    end
+})
+
+Tab:AddToggle({
+    Name = "Town Egg",
+    Default = state,
+    Callback = function(state)
+_G.autobuyegg2 = state
+while _G.autobuyegg2 do wait()
+local args = {
+    [1] = "Town",
+    [2] = 1
+}
+
+game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("HatchEgg"):InvokeServer(unpack(args))
+    
+wait()
+end
+    end
+})
+
+Tab:AddToggle({
+    Name = "Beach Egg",
+    Default = state,
+    Callback = function(state)
+_G.autobuyegg3 = state
+while _G.autobuyegg3 do wait()
+local args = {
+    [1] = "Beach",
+    [2] = 1
+}
+
+game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("HatchEgg"):InvokeServer(unpack(args))
+    
+wait()
+end
+    end
+})
+
+Tab:AddToggle({
+    Name = "Crystal Egg",
+    Default = state,
+    Callback = function(state)
+_G.autobuyegg4 = state
+while _G.autobuyegg4 do wait()
+local args = {
+    [1] = "Crystal",
+    [2] = 1
+}
+
+game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("HatchEgg"):InvokeServer(unpack(args))
+    
+wait()
+end
+    end
+})
+
+Tab:AddToggle({
+    Name = "Forest Egg",
+    Default = state,
+    Callback = function(state)
+_G.autobuyegg5 = state
+while _G.autobuyegg5 do wait()
+local args = {
+    [1] = "Forest",
+    [2] = 1
+}
+
+game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("HatchEgg"):InvokeServer(unpack(args))
+    
+wait()
+end
+    end
+})
+
+Tab:AddToggle({
+    Name = "Desert Egg",
+    Default = state,
+    Callback = function(state)
+_G.autobuyegg6 = state
+while _G.autobuyegg6 do wait()
+local args = {
+    [1] = "Desert",
+    [2] = 1
+}
+
+game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("HatchEgg"):InvokeServer(unpack(args))
+    
+wait()
+end
+    end
+})
+
+Tab:AddToggle({
+    Name = "Hell Egg",
+    Default = state,
+    Callback = function(state)
+_G.autobuyegg7 = state
+while _G.autobuyegg7 do wait()
+local args = {
+    [1] = "Hell",
+    [2] = 1
+}
+
+game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("HatchEgg"):InvokeServer(unpack(args))
+    
+wait()
+end
+    end
+})
+
+Tab:AddToggle({
+    Name = "Candy Egg",
+    Default = state,
+    Callback = function(state)
+_G.autobuyegg8 = state
+while _G.autobuyegg8 do wait()
+local args = {
+    [1] = "Candy",
+    [2] = 1
+}
+
+game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("HatchEgg"):InvokeServer(unpack(args))
+    
+wait()
+end
+    end
+})
+
+Tab:AddToggle({
+    Name = "Void Egg",
+    Default = state,
+    Callback = function(state)
+_G.autobuyegg9 = state
+while _G.autobuyegg9 do wait()
+local args = {
+    [1] = "Void",
+    [2] = 1
+}
+
+game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("HatchEgg"):InvokeServer(unpack(args))
+    
+wait()
+end
+    end
+})
+
+Tab:AddToggle({
+    Name = "Anime Egg",
+    Default = state,
+    Callback = function(state)
+_G.autobuyegg10 = state
+while _G.autobuyegg10 do wait()
+local args = {
+    [1] = "Anime",
+    [2] = 1
+}
+
+game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("HatchEgg"):InvokeServer(unpack(args))
+    
+wait()
+end
+    end
+})
+
+Tab:AddToggle({
+    Name = "Moon Egg",
+    Default = state,
+    Callback = function(state)
+_G.autobuyegg11 = state
+while _G.autobuyegg11 do wait()
+local args = {
+    [1] = "Moon",
+    [2] = 1
+}
+
+game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("HatchEgg"):InvokeServer(unpack(args))
+    
+wait()
+end
+    end
+})
+
+Tab:AddToggle({
+    Name = "Angel Egg",
+    Default = state,
+    Callback = function(state)
+_G.autobuyegg12 = state
+while _G.autobuyegg12 do wait()
+local args = {
+    [1] = "Angel",
+    [2] = 1
+}
+
+game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("HatchEgg"):InvokeServer(unpack(args))
+    
+wait()
+end
+    end
+})
+
+Tab:AddToggle({
+    Name = "Boss Egg",
+    Default = state,
+    Callback = function(state)
+_G.autobuyegg13 = state
+while _G.autobuyegg13 do wait()
+local args = {
+    [1] = "Boss",
+    [2] = 1
+}
+
+game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("HatchEgg"):InvokeServer(unpack(args))
+    
+wait()
+end
+    end
+})
+
+Tab:AddToggle({
+    Name = "Easter Egg",
+    Default = state,
+    Callback = function(state)
+_G.autobuyegg14 = state
+while _G.autobuyegg14 do wait()
+local args = {
+    [1] = "Easter",
+    [2] = 1
+}
+
+game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("HatchEgg"):InvokeServer(unpack(args))
+    
+wait()
+end
+    end
+})
+
+
+
+local Tab = Window:MakeTab({
+	Name = "Others",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+
+local Section = Tab:AddSection({
+	Name = "Auto Gifts"
+})
+Tab:AddToggle({
+    Name = "Auto Redeem Free Gifts",
+    Default = state,
+    Callback = function(state)
+_G.autogifts = state
+while _G.autogifts do wait()
+local args = {
+    [1] = "Potion1",
+    [2] = "Muscle1",
+    [3] = "Gem1",
+    [4] = "Potion2",
+    [5] = "Muscle2",
+    [6] = "Win1",
+    [7] = "Gem2",
+    [8] = "Win2",
+    [9] = "LimitedPet"
+}
+for _,arg in ipairs(args) do
+    game:GetService("ReplicatedStorage").Events.FreeGift:FireServer(arg)
+    wait(.1)
+    end
+    end
+end
+})
+
+Tab:AddToggle({
+    Name = "Auto Spin Wheel",
+    Default = state,
+    Callback = function(state)
+_G.autospin = state
+while _G.autospin do wait()
+game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("Spin Wheel"):FireServer()
+wait(10)
+end
+    end
+})
+
+local Section = Tab:AddSection({
+	Name = "Auto Potions"
+})
+
+Tab:AddToggle({
+    Name = "Auto Double Muscle",
+    Default = state,
+    Callback = function(state)
+_G.automuscle = state
+while _G.automuscle do wait()
+game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("MuscleUse"):FireServer()
+wait(5)
+end
+    end
+})
+
+Tab:AddToggle({
+    Name = "Auto Triple Gem",
+    Default = state,
+    Callback = function(state)
+_G.autogem = state
+while _G.autogem do wait()
+game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("GemUse"):FireServer()
+wait(5)
+end
+    end
+})
+
+Tab:AddToggle({
+    Name = "Auto Super Lucky",
+    Default = state,
+    Callback = function(state)
+_G.autoluck = state
+while _G.autoluck do wait()
+game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("LuckUse"):FireServer()
+wait(5)
+end
+    end
+})
+
+Tab:AddToggle({
+    Name = "Auto Ultra Lucky",
+    Default = state,
+    Callback = function(state)
+_G.autoultraluck = state
+while _G.autoultraluck do wait()
+game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("UltraLuckUse"):FireServer()
+wait(5)
+end
+    end
+})
+
+local Section = Tab:AddSection({
+	Name = "Redeem All Codes"
+})
+
+Tab:AddButton({
+Name = "Auto Redeem All Codes",
+Callback = function()
+local autocodes = true
+while autocodes do
+local args = {
+"EASTER",
+"RELEASE",
+"EAST3R3V3NNT"
+}
+for _, arg in ipairs(args) do
+game:GetService("ReplicatedStorage"):WaitForChild("Modules"):WaitForChild("CodeModule"):WaitForChild("EnterCode"):InvokeServer(arg)
+wait(0.5)
+end
+end
+print("button pressed")
+end
+})
+
+OrionLib:Init()
