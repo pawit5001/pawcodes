@@ -1,0 +1,485 @@
+local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/pawit5001/pawcodes/main/uithankstoOrionLib')))()
+local Window = OrionLib:MakeWindow({Name = "MBLover | Still In Devs UPD SOON...", HidePremium = false, SaveConfig = true, ConfigFolder = "Anime Lost Simulator"})
+local Tab = Window:MakeTab({
+	Name = "Main",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+local Section = Tab:AddSection({
+	Name = "Auto Farm"
+})
+
+Tab:AddToggle({
+	Name = "Auto Power",
+	Default = state,
+	Callback = function(state)
+_G.autopower = state
+while _G.autopower do wait()
+game:GetService("ReplicatedStorage"):WaitForChild("Modules"):WaitForChild("LBConnection"):WaitForChild("Remotes"):WaitForChild("attackFunc"):FireServer()
+wait()
+end		
+		print(Value)
+	end    
+})
+
+Tab:AddToggle({
+	Name = "Auto Equip Best Swords",
+	Default = state,
+	Callback = function(state)
+_G.autoequipbestsword = state
+while _G.autoequipbestsword do wait()
+local args = {
+    [1] = "Swords"
+}
+
+game:GetService("ReplicatedStorage"):WaitForChild("Modules"):WaitForChild("LBConnection"):WaitForChild("Remotes"):WaitForChild("EquipBest"):FireServer(unpack(args))
+wait(10)
+end		
+		print(Value)
+	end    
+})
+
+Tab:AddToggle({
+	Name = "Auto Equip Best Pets",
+	Default = state,
+	Callback = function(state)
+_G.autoequipbestpet = state
+while _G.autoequipbestpet do wait()
+
+local args = {
+    [1] = "Pets"
+}
+
+game:GetService("ReplicatedStorage"):WaitForChild("Modules"):WaitForChild("LBConnection"):WaitForChild("Remotes"):WaitForChild("EquipBest"):FireServer(unpack(args))
+wait(10)
+end
+		print(Value)
+	end    
+})
+
+
+Tab:AddToggle({
+	Name = "Auto Ascend",
+	Default = state,
+	Callback = function(state)
+_G.autoascend = state
+while _G.autoascend do wait()
+game:GetService("ReplicatedStorage"):WaitForChild("Modules"):WaitForChild("LBConnection"):WaitForChild("Remotes"):WaitForChild("RebirthRem"):FireServer()
+wait(10)
+end		
+		print(Value)
+	end    
+})
+
+local Section = Tab:AddSection({
+	Name = "Auto Buy"
+})
+
+Tab:AddToggle({
+	Name = "Auto Spin Skills",
+	Default = state,
+	Callback = function(state)
+_G.autospinskills = state
+while _G.autospinskills do wait()
+game:GetService("ReplicatedStorage"):WaitForChild("Modules"):WaitForChild("LBConnection"):WaitForChild("Remotes"):WaitForChild("Skill_Spin"):FireServer()
+wait(2)
+end
+		print(Value)
+	end    
+})
+
+
+local Tab = Window:MakeTab({
+	Name = "Mobs",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+
+Tab:AddParagraph("Read Before Enable Auto Mobs","1.You must stay at the same area as the mobs before enable auto mobs, This function will not working if you are not at the same area as the mobs")
+
+
+local Section = Tab:AddSection({
+	Name = "Auto Mobs"
+})
+
+
+Tab:AddLabel("Turn Auto Attack Mobs Before TP To Mobs")
+
+Tab:AddToggle({
+	Name = "Auto Attack Mobs",
+	Default = state,
+	Callback = function(state)
+_G.autoskill = state
+while _G.autoskill do wait()
+local args = {
+    [1] = "Slot1"
+    
+}
+
+game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("Send Information"):FireServer(unpack(args))
+
+local args = {
+    [1] = "Slot2"
+    
+}
+
+game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("Send Information"):FireServer(unpack(args))
+
+game:GetService("ReplicatedStorage"):WaitForChild("Modules"):WaitForChild("LBConnection"):WaitForChild("Remotes"):WaitForChild("attackFunc"):FireServer()
+wait()
+end
+		print(Value)
+	end    
+})
+
+
+local Section = Tab:AddSection({
+	Name = "Sarnek"
+})
+
+
+Tab:AddToggle({
+	Name = "Radio | Weak",
+	Default = state,
+	Callback = function(state)
+_G.sarnekmob1 = state
+while _G.sarnekmob1 do wait(2)
+for i,v in pairs(game:GetService("Workspace").EnemyNPCs:GetDescendants()) do
+    if v.Name == "Radio" then
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame * CFrame.new(0,0,3)
+    end
+end
+end
+		print(Value)
+	end    
+})
+
+Tab:AddToggle({
+	Name = "Imperfect Bug | Strong",
+	Default = state,
+	Callback = function(state)
+_G.sarnekmob2 = state
+while _G.sarnekmob2 do wait(2)
+for i,v in pairs(game:GetService("Workspace").EnemyNPCs:GetDescendants()) do
+    if v.Name == "Imperfect Bug" then
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame * CFrame.new(0,0,3)
+    end
+end
+end
+		print(Value)
+	end    
+})
+
+Tab:AddToggle({
+	Name = "Fruit | Miniboss",
+	Default = state,
+	Callback = function(state)
+_G.sarnekmob3 = state
+while _G.sarnekmob3 do wait(2)
+for i,v in pairs(game:GetService("Workspace").EnemyNPCs:GetDescendants()) do
+    if v.Name == "Fruit" then
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame * CFrame.new(0,0,3)
+    end
+end
+end
+		print(Value)
+	end    
+})
+
+Tab:AddToggle({
+	Name = "Bul | Boss",
+	Default = state,
+	Callback = function(state)
+_G.sarnekmob4 = state
+while _G.sarnekmob4 do wait(2)
+for i,v in pairs(game:GetService("Workspace").EnemyNPCs:GetDescendants()) do
+    if v.Name == "Bul" then
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame * CFrame.new(0,0,3)
+    end
+end
+end
+		print(Value)
+	end    
+})
+
+local Section = Tab:AddSection({
+	Name = "Ninja Town"
+})
+
+Tab:AddToggle({
+	Name = "Desert Ninja | Weak",
+	Default = state,
+	Callback = function(state)
+_G.sarnekmob5 = state
+while _G.sarnekmob5 do wait(2)
+for i,v in pairs(game:GetService("Workspace").EnemyNPCs:GetDescendants()) do
+    if v.Name == "Desert Ninja" then
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame * CFrame.new(0,0,3)
+    end
+end
+end
+		print(Value)
+	end    
+})
+
+Tab:AddToggle({
+	Name = "Mist Ninja | Strong",
+	Default = state,
+	Callback = function(state)
+_G.sarnekmob6 = state
+while _G.sarnekmob6 do wait(2)
+for i,v in pairs(game:GetService("Workspace").EnemyNPCs:GetDescendants()) do
+    if v.Name == "Mist Ninja" then
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame * CFrame.new(0,0,3)
+    end
+end
+end
+		print(Value)
+	end    
+})
+
+Tab:AddToggle({
+	Name = "Ninja Snake King | Miniboss",
+	Default = state,
+	Callback = function(state)
+_G.sarnekmob7 = state
+while _G.sarnekmob7 do wait(2)
+for i,v in pairs(game:GetService("Workspace").EnemyNPCs:GetDescendants()) do
+    if v.Name == "Ninja Snake King" then
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame * CFrame.new(0,0,3)
+    end
+end
+end
+		print(Value)
+	end    
+})
+
+Tab:AddToggle({
+	Name = "Untouchable Ninja | Boss",
+	Default = state,
+	Callback = function(state)
+_G.sarnekmob8 = state
+while _G.sarnekmob8 do wait(2)
+for i,v in pairs(game:GetService("Workspace").EnemyNPCs:GetDescendants()) do
+    if v.Name == "Untouchable Ninja" then
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame * CFrame.new(0,0,3)
+    end
+end
+end
+		print(Value)
+	end    
+})
+
+
+
+
+
+
+
+
+local Tab = Window:MakeTab({
+	Name = "Eggs",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+
+Tab:AddParagraph("Read Before Enable Auto Egg","1.You must stay at the same area as the egg before enable auto egg, This function will not working if you are not at the same area as the mobs")
+
+
+local Section = Tab:AddSection({
+	Name = "Sarnek"
+})
+
+Tab:AddToggle({
+	Name = "Sarnek's Egg!",
+	Default = state,
+	Callback = function(state)
+_G.autoegg1 = state
+while _G.autoegg1 do wait()
+
+local args = {
+    [1] = 9614,
+    [2] = "Open_1"
+}
+
+game:GetService("ReplicatedStorage"):WaitForChild("Modules"):WaitForChild("LBConnection"):WaitForChild("Remotes"):WaitForChild("Egg_Spin"):WaitForChild("Sent"):FireServer(unpack(args))
+
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-672.512573, 16.0945835, 185.918839, 0.872861207, 3.61921089e-08, -0.487968564, -2.75117777e-08, 1, 2.49568224e-08, 0.487968564, -8.35895886e-09, 0.872861207)
+wait(0)
+end		
+		print(Value)
+	end    
+})
+
+local Section = Tab:AddSection({
+	Name = "Ninja Town"
+})
+
+Tab:AddToggle({
+	Name = "Ninja Town's Egg!",
+	Default = state,
+	Callback = function(state)
+_G.autoegg2 = state
+while _G.autoegg2 do wait()
+
+local args = {
+    [1] = 60925,
+    [2] = "Open_1"
+}
+
+game:GetService("ReplicatedStorage"):WaitForChild("Modules"):WaitForChild("LBConnection"):WaitForChild("Remotes"):WaitForChild("Egg_Spin"):WaitForChild("Sent"):FireServer(unpack(args))
+
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-418.961182, 24.3364658, 2737.97705, -0.984681129, -2.76017147e-08, -0.174364895, -2.00513561e-08, 1, -4.50636755e-08, 0.174364895, -4.08770973e-08, -0.984681129)
+wait(0)
+end		
+		print(Value)
+	end    
+})
+
+
+local Tab = Window:MakeTab({
+	Name = "Teleports",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+
+Tab:AddLabel("You have to unlock the area first before teleport")
+
+local Section = Tab:AddSection({
+	Name = "Teleport To"
+})
+
+Tab:AddButton({
+	Name = "Sarnek",
+	Callback = function()
+      local args = {
+    [1] = "Sarnek"
+}
+
+game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("portalTeleport"):FireServer(unpack(args))
+		
+      		print("button pressed")
+  	end    
+})
+
+Tab:AddButton({
+	Name = "Ninja Town",
+	Callback = function()
+      local args = {
+    [1] = "Ninja Town"
+}
+
+game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("portalTeleport"):FireServer(unpack(args))
+		
+      		print("button pressed")
+  	end    
+})
+
+
+local Tab = Window:MakeTab({
+	Name = "Misc",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+
+local Section = Tab:AddSection({
+	Name = "Auto Rewards"
+})
+
+Tab:AddToggle({
+	Name = "Auto Claim Hourly Rewards",
+	Default = state,
+	Callback = function(state)
+_G.autohourlyrewards = state
+while _G.autohourlyrewards do wait()
+
+for i = 1, 12 do
+    local args = {
+        [1] = "Collect",
+        [2] = tostring(i)
+    }
+
+    game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("hourlyRewards"):InvokeServer(unpack(args))
+wait()
+end
+end	
+		print(Value)
+	end    
+})
+
+local Section = Tab:AddSection({
+	Name = "Auto Postion"
+})
+
+Tab:AddToggle({
+	Name = "Auto Damage Potion",
+	Default = state,
+	Callback = function(state)
+_G.autousedamage = state
+while _G.autousedamage do wait(2)
+
+local args = {
+    [1] = "Damage"
+}
+
+game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("UsePotion"):FireServer(unpack(args))
+wait(2)
+end
+		print(Value)
+	end    
+})
+
+Tab:AddToggle({
+	Name = "Auto Power Potion",
+	Default = state,
+	Callback = function(state)
+_G.autousepower = state
+while _G.autousepower do wait(2)
+
+local args = {
+    [1] = "Power"
+}
+
+game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("UsePotion"):FireServer(unpack(args))
+wait(2)
+end
+		print(Value)
+	end    
+})
+
+Tab:AddToggle({
+	Name = "Auto Luck Potion",
+	Default = state,
+	Callback = function(state)
+_G.autouseluck = state
+while _G.autouseluck do wait(2)
+
+local args = {
+    [1] = "Luck"
+}
+
+game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("UsePotion"):FireServer(unpack(args))
+wait(2)
+end
+		print(Value)
+	end    
+})
+
+Tab:AddToggle({
+	Name = "Auto Stars Potion",
+	Default = state,
+	Callback = function(state)
+_G.autousestars = state
+while _G.autousestars do wait(2)
+
+local args = {
+    [1] = "Coins"
+}
+
+game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("UsePotion"):FireServer(unpack(args))
+wait(2)
+end
+		print(Value)
+	end    
+})
+
