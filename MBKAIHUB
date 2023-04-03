@@ -14,4 +14,8 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/pawit5001/pawcodes/ma
 elseif PlaceId == 12083773314 then
 loadstring(game:HttpGet("https://raw.githubusercontent.com/pawit5001/pawcodes/main/Troop%20Army%20Simulator"))()
 
+elseif PlaceId == 12413786484 then
+loadstring(game:HttpGet("https://raw.githubusercontent.com/pawit5001/pawcodes/main/animelostsim"))()
+
+
 end
