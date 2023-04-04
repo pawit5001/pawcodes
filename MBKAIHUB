@@ -1,10 +1,11 @@
 local PlaceId = game.PlaceId
 
+-----Supported games
 --Get Huge Simulator
 --Strong Muscle Simulator
 --Troop Army Simulator
 --Anime Lost Simulator#still-in-devs
-
+--4kings
 
 if PlaceId == 10945472407 then
 loadstring(game:HttpGet("https://raw.githubusercontent.com/pawit5001/pawcodes/main/strongmusclesim"))()
@@ -17,6 +18,11 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/pawit5001/pawcodes/ma
 
 elseif PlaceId == 12413786484 then
 loadstring(game:HttpGet("https://raw.githubusercontent.com/pawit5001/pawcodes/main/animelostsim"))()
+
+elseif PlaceId == 8279312863 then
+loadstring(game:HttpGet("https://raw.githubusercontent.com/pawit5001/pawcodes/main/4kings"))()
+
+
 
 
 end
