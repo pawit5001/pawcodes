@@ -1,0 +1,284 @@
+local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/pawit5001/pawcodes/main/uithankstoOrionLib')))()
+local Window = OrionLib:MakeWindow({Name = "MBLover", HidePremium = false, SaveConfig = true, ConfigFolder = "STB MB"})
+
+
+local Tab = Window:MakeTab({
+	Name = "Main",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+
+local Section = Tab:AddSection({
+	Name = "Auto Eqiup"
+})
+
+Tab:AddParagraph("WARNING!!!","You can equip only 1 weapon, Make sure you disbale the last weapon before enable the new one.                                                YOU WOULD GET KICK FROM THE SERVER IF YOU EQUIPING 2 OR MORE WEAPONS AT THE SAME TIME")
+Tab:AddToggle({
+	Name = "Combat",
+	Default = state,
+	Callback = function(state)
+		_G.autoequip1 = state
+while _G.autoequip1 do wait()
+local toolName = "Combat"
+    local player = game:GetService("Players").LocalPlayer
+    local backpack = player.Backpack
+    local tool = backpack:FindFirstChild(toolName)
+    if tool then
+        player.Character.Humanoid:EquipTool(tool)
+    end
+wait(.1)
+end
+		print(Value)
+	end    
+})
+
+
+Tab:AddToggle({
+	Name = "Bottle",
+	Default = state,
+	Callback = function(state)
+	_G.autoequip2 = state
+while _G.autoequip2 do wait()
+local toolName = "Bottle"
+    local player = game:GetService("Players").LocalPlayer
+    local backpack = player.Backpack
+    local tool = backpack:FindFirstChild(toolName)
+    if tool then
+        player.Character.Humanoid:EquipTool(tool)
+    end
+wait(.1)
+end
+		print(Value)
+	end    
+})
+
+Tab:AddToggle({
+	Name = "Golf Club",
+	Default = state,
+	Callback = function(state)
+	_G.autoequip3 = state
+while _G.autoequip3 do wait()
+local toolName = "Golf Club"
+    local player = game:GetService("Players").LocalPlayer
+    local backpack = player.Backpack
+    local tool = backpack:FindFirstChild(toolName)
+    if tool then
+        player.Character.Humanoid:EquipTool(tool)
+    end
+wait(.1)
+end
+		print(Value)
+	end    
+})
+
+Tab:AddToggle({
+	Name = "Brass Knuckles",
+	Default = state,
+	Callback = function(state)
+	_G.autoequip4 = state
+while _G.autoequip4 do wait()
+local toolName = "Brass Knuckless"
+    local player = game:GetService("Players").LocalPlayer
+    local backpack = player.Backpack
+    local tool = backpack:FindFirstChild(toolName)
+    if tool then
+        player.Character.Humanoid:EquipTool(tool)
+    end
+wait(.1)
+end
+		print(Value)
+	end    
+})
+
+Tab:AddToggle({
+	Name = "Knife",
+	Default = state,
+	Callback = function(state)
+	_G.autoequip5 = state
+while _G.autoequip5 do wait()
+local toolName = "Knife"
+    local player = game:GetService("Players").LocalPlayer
+    local backpack = player.Backpack
+    local tool = backpack:FindFirstChild(toolName)
+    if tool then
+        player.Character.Humanoid:EquipTool(tool)
+    end
+wait(.1)
+end
+		print(Value)
+	end    
+})
+
+Tab:AddToggle({
+	Name = "Baseball Bat",
+	Default = state,
+	Callback = function(state)
+		_G.autoequip6 = state
+while _G.autoequip6 do wait()
+local toolName = "Baseball Bat"
+    local player = game:GetService("Players").LocalPlayer
+    local backpack = player.Backpack
+    local tool = backpack:FindFirstChild(toolName)
+    if tool then
+        player.Character.Humanoid:EquipTool(tool)
+    end
+wait(.1)
+end
+		print(Value)
+	end    
+})
+
+
+
+local Section = Tab:AddSection({
+	Name = "Player (use with your own risk)"
+})
+
+Tab:AddToggle({
+	Name = "ESP Player (Take a few sesc to stop)",
+	Default = state,
+	Callback = function(state)
+	
+	_G.esp = state
+
+while _G.esp do
+    for i,v in pairs(game.Players:GetChildren()) do
+        if v ~= game.Players.LocalPlayer and not v.Character.Head:FindFirstChild("ESP") then
+            local BillboardGui = Instance.new("BillboardGui")
+            local TextLabel = Instance.new("TextLabel")
+            BillboardGui.Parent = v.Character.Head
+            BillboardGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+            BillboardGui.Active = true
+            BillboardGui.Name = "ESP"
+            BillboardGui.AlwaysOnTop = true
+            BillboardGui.LightInfluence = 1.000
+            BillboardGui.Size = UDim2.new(0, 200, 0, 50)
+            BillboardGui.StudsOffset = Vector3.new(0, 2.5, 0)
+            TextLabel.Parent = BillboardGui
+            TextLabel.BackgroundColor3 = Color3.fromRGB(212, 4, 88)
+            TextLabel.BackgroundTransparency = 1.000
+            TextLabel.Size = UDim2.new(0, 200, 0, 50)
+            TextLabel.Font = Enum.Font.GothamBold
+            TextLabel.Text = v.Name
+            TextLabel.TextColor3 = Color3.fromRGB(240, 128, 128)
+            TextLabel.TextScaled = true
+            TextLabel.TextSize = 10.000
+            TextLabel.TextStrokeTransparency = 0.000
+            TextLabel.TextWrapped = true
+            
+            spawn(function()
+                while _G.esp and v.Character.Head:FindFirstChild("ESP") do
+                    if v.Character.Head and v.Character:FindFirstChild("Humanoid") and v.Character.Humanoid.Health > 0 then
+                        local playerDistance = (v.Character.Head.Position - game.Players.LocalPlayer.Character.Head.Position).magnitude
+                        TextLabel.Text = v.Name .. "\nDistance: " .. math.floor(playerDistance) .. "m"
+                    else
+                        BillboardGui:Destroy()
+                        break
+                    end
+                    wait()
+                end
+                if BillboardGui and BillboardGui.Parent == v.Character.Head then
+                    BillboardGui:Destroy(.5) 
+                end
+            end)
+        end
+    end
+    if _G.esp then
+    for _, player in ipairs(game:GetService("Players"):GetPlayers()) do
+        player.CharacterAdded:Connect(function(character)
+            character:WaitForChild("Humanoid").DisplayDistanceType = Enum.HumanoidDisplayDistanceType.None
+        end)
+        if player.Character then
+            player.Character:WaitForChild("Humanoid").DisplayDistanceType = Enum.HumanoidDisplayDistanceType.None
+        end
+    end
+else
+    for _, player in ipairs(game:GetService("Players"):GetPlayers()) do
+        if player.Character then
+            player.Character:WaitForChild("Humanoid").DisplayDistanceType = Enum.HumanoidDisplayDistanceType.Viewer
+        end
+    end
+end
+
+    wait(2)
+end
+
+		print(Value)
+	end    
+})
+Tab:AddButton({
+	Name = "Original Viewer (Press after you disbaled ESP Player)",
+	Callback = function()
+      		
+      		for _, player in ipairs(game:GetService("Players"):GetPlayers()) do
+        if player.Character then
+            player.Character:WaitForChild("Humanoid").DisplayDistanceType = Enum.HumanoidDisplayDistanceType.Viewer
+        end
+    end
+      		print("button pressed")
+  	end    
+})
+
+local Tab = Window:MakeTab({
+	Name = "Combat",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+
+local Section = Tab:AddSection({
+	Name = "Combat"
+})
+
+
+local Section = Tab:AddSection({
+	Name = "TP TO PLAYERS"
+})
+
+Plr = {}
+for i,v in pairs(game:GetService("Players"):GetChildren()) do
+    if v ~= game.Players.LocalPlayer then
+        table.insert(Plr,v.Name)
+    end
+end
+
+local playerDropdown
+
+Tab:AddDropdown({
+    Name = "Select Players",
+    Default = "false",
+    Options = Plr,
+    Callback = function(T)
+        PlayerTP = T
+        print(T)
+    end,
+    Update = function(dropdown)
+        playerDropdown = dropdown
+    end
+})
+
+local function teleportToPlayer()
+    while _G.autotp do
+        local player = game.Players[PlayerTP]
+        if player then
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = player.Character.HumanoidRootPart.CFrame * CFrame.new(0, 0, 2)
+        end
+        if playerDropdown and #playerDropdown.Options ~= #Plr then
+            playerDropdown:Refresh(Plr, true)
+        end
+
+        wait()
+    end
+end
+
+Tab:AddToggle({
+    Name = "Auto teleport to player",
+    Default = false,
+    Callback = function(state)
+        _G.autotp = state
+        if state then
+            teleportToPlayer()
+        end
+    end
+})
+
+
