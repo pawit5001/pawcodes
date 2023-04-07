@@ -1,0 +1,183 @@
+local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/pawit5001/pawcodes/main/uithankstoOrionLib')))()
+
+local Window = OrionLib:MakeWindow({Name = "MBLover", HidePremium = false, SaveConfig = true, ConfigFolder = "Banna City MB"})
+
+local Tab = Window:MakeTab({
+	Name = "Main",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+
+local Section = Tab:AddSection({
+	Name = "Auto Money"
+})
+
+Tab:AddLabel("Enable Auto Farm and Auto Sell Together")
+
+Tab:AddToggle({
+	Name = "Auto Farm (Risky)",
+	Default = state,
+	Callback = function(state)
+	
+	_G.grass = state
+while _G.grass do
+    wait()
+    pcall(function()
+        local prompt = game:GetService("Workspace").Grass["_grass"].ProximityPrompt
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = prompt.Parent.CFrame * CFrame.new (0,5,5)
+        wait()
+        fireproximityprompt(prompt)
+        wait()
+    end)
+wait(.3)
+end
+
+		print(Value)
+	end    
+})
+
+
+
+Tab:AddToggle({
+	Name = "Auto Farm",
+	Default = state,
+	Callback = function(state)
+		
+		_G.automine = state
+
+local ironFolder = game:GetService("Workspace").RockFolder
+local ironList = ironFolder:GetChildren()
+
+while _G.automine do
+    wait() 
+    
+    for _, iron in ipairs(ironList) do
+        if iron.Name ~= "Iron" then
+            continue
+        end
+        
+        pcall(function()
+        local prompt = game:GetService("Workspace").RockFolder["Iron"].ProximityPrompt
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = prompt.Parent.CFrame * CFrame.new(0,2,5)
+        wait()
+        fireproximityprompt(prompt)
+        wait(.1)
+        end)
+    end
+wait()
+end
+		
+		print(Value)
+	end    
+})
+
+Tab:AddToggle({
+	Name = "Auto Sell",
+	Default = state,
+	Callback = function(state)
+		
+		    _G.sell = state
+    while _G.sell do wait()
+    
+    local args = {
+        [1] = "Sell",
+        [2] = "Iron"
+    }
+
+    game:GetService("ReplicatedStorage").GLOBAL_VALUES.ConfigrationFolder.GlobalEvent:FireServer(unpack(args))
+wait(10)
+end
+
+		
+		print(Value)
+	end    
+})
+
+
+
+
+local Tab = Window:MakeTab({
+	Name = "Combat",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+
+local Section = Tab:AddSection({
+	Name = "Players"
+})
+
+Tab:AddToggle({
+	Name = "ESP Players",
+	Default = state,
+	Callback = function(state)
+		
+		_G.esp = state
+
+while _G.esp do
+    for i,v in pairs(game.Players:GetChildren()) do
+        if v ~= game.Players.LocalPlayer and not v.Character.Head:FindFirstChild("ESP") then
+            local BillboardGui = Instance.new("BillboardGui")
+            local TextLabel = Instance.new("TextLabel")
+            BillboardGui.Parent = v.Character.Head
+            BillboardGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+            BillboardGui.Active = true
+            BillboardGui.Name = "ESP"
+            BillboardGui.AlwaysOnTop = true
+            BillboardGui.LightInfluence = 1.000
+            BillboardGui.Size = UDim2.new(0, 200, 0, 50)
+            BillboardGui.StudsOffset = Vector3.new(0, 2, 0)
+            TextLabel.Parent = BillboardGui
+            TextLabel.BackgroundColor3 = Color3.fromRGB(212, 4, 88)
+            TextLabel.BackgroundTransparency = 1.000
+            TextLabel.Size = UDim2.new(0, 80, 0, 50)
+            TextLabel.Font = Enum.Font.GothamBold
+            TextLabel.Text = v.Name
+            TextLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+            TextLabel.TextScaled = true
+            TextLabel.TextSize = 10.000
+            TextLabel.TextStrokeTransparency = 0.000
+            TextLabel.TextWrapped = true
+            
+            spawn(function()
+                while _G.esp and v.Character.Head:FindFirstChild("ESP") do
+                    if v.Character.Head and v.Character:FindFirstChild("Humanoid") and v.Character.Humanoid.Health > 0 then
+                        local playerDistance = (v.Character.Head.Position - game.Players.LocalPlayer.Character.Head.Position).magnitude
+                        TextLabel.Text = v.Name .. "\nDistance: " .. math.floor(playerDistance) .. "m"
+                    else
+                        BillboardGui:Destroy()
+                        break
+                    end
+                    wait(.5)
+                end
+                if BillboardGui and BillboardGui.Parent == v.Character.Head then
+                    BillboardGui:Destroy(.5) 
+                end
+            end)
+        end
+    end
+    if _G.esp then
+    for _, player in ipairs(game:GetService("Players"):GetPlayers()) do
+        player.CharacterAdded:Connect(function(character)
+            character:WaitForChild("Humanoid").DisplayDistanceType = Enum.HumanoidDisplayDistanceType.None
+        end)
+        if player.Character then
+            player.Character:WaitForChild("Humanoid").DisplayDistanceType = Enum.HumanoidDisplayDistanceType.None
+        end
+    end
+else
+    for _, player in ipairs(game:GetService("Players"):GetPlayers()) do
+        if player.Character then
+            player.Character:WaitForChild("Humanoid").DisplayDistanceType = Enum.HumanoidDisplayDistanceType.Viewer
+        end
+    end
+end
+
+    wait(2)
+end
+		
+		print(Value)
+	end    
+})
+
+
+
