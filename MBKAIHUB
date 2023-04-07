@@ -6,6 +6,7 @@ local PlaceId = game.PlaceId
 --Troop Army Simulator
 --Anime Lost Simulator#still-in-devs
 --4kings
+--Banna City
 
 if PlaceId == 10945472407 then
 loadstring(game:HttpGet("https://raw.githubusercontent.com/pawit5001/pawcodes/main/strongmusclesim"))()
@@ -21,6 +22,9 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/pawit5001/pawcodes/ma
 
 elseif PlaceId == 8279312863 then
 loadstring(game:HttpGet("https://raw.githubusercontent.com/pawit5001/pawcodes/main/4kings"))()
+
+elseif PlaceId == 6925849909 then
+loadstring(game:HttpGet("https://raw.githubusercontent.com/pawit5001/pawcodes/main/bannacity"))()
 
 
 
